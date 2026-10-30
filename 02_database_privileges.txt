@@ -1,0 +1,4 @@
+GRANTEE	PRIVILEGE_TYPE
+'sqli_app'@'localhost'	SELECT
+'sqli_app'@'localhost'	INSERT
+'sqli_app'@'localhost'	UPDATE

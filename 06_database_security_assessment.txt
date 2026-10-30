@@ -1,0 +1,11 @@
+===== DATABASE SECURITY CONFIGURATION EVIDENCE =====
+
+User	Host	Select_priv	Insert_priv	Update_priv	Delete_priv	Create_priv	Drop_priv	Grant_priv	Execute_priv	File_priv
+sqli_app	localhost	N	N	N	N	N	N	N	N	N
+
+Variable_name	Value
+bind_address	127.0.0.1
+local_infile	ON
+secure_file_priv	
+skip_name_resolve	OFF
+skip_networking	OFF

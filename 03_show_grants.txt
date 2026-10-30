@@ -1,0 +1,4 @@
+Grants for sqli_app@localhost
+GRANT USAGE ON *.* TO `sqli_app`@`localhost` IDENTIFIED BY PASSWORD '*C86FAF167649F033DB42807E5704591454714B24'
+GRANT SELECT, INSERT, UPDATE ON `sqli_lab`.* TO `sqli_app`@`localhost`
+GRANT EXECUTE ON PROCEDURE `testdb`.`search_user` TO `sqli_app`@`localhost`

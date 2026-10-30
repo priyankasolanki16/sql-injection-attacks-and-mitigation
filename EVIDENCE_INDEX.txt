@@ -1,0 +1,64 @@
+SQL INJECTION PROJECT - EVIDENCE INDEX
+
+1. Vulnerable SQL Queries
+   - vulnerable_login.php
+   - vulnerable_search.php
+   - Direct SQL query construction verified with grep.
+
+2. Secure SQL Queries
+   - secure_login.php
+   - secure_search.php
+   - prepare() and bind_param() verified with grep.
+
+3. PHP Syntax Validation
+   - All six PHP files passed php -l.
+
+4. Error-Based SQL Injection
+   - Error-based SQLi demonstrated against vulnerable_search.php.
+   - Apache error log contains mysqli_sql_exception with MariaDB SQL syntax error.
+   - Evidence: section4/05_error_based_sqli.txt.
+
+5. SQL Injection Detection
+   - ModSecurity rule 942100 detected SQL Injection via libinjection.
+
+6. SQL Injection Blocking
+   - ModSecurity rule 949110 returned HTTP 403.
+
+7. Secure Login Testing
+   - Valid admin login successful.
+   - Valid alice login successful.
+
+8. Secure Search Testing
+   - alice search successful.
+   - bob search successful.
+
+9. Secure Error Handling
+   - Malformed username input returned "No user found."
+   - No SQL error exposed.
+
+10. Least Privilege
+    - sqli_app grants verified.
+    - Access to mysql.user denied.
+    - sqli_lab contains users table.
+
+11. Database Verification
+    - Database: sqli_lab
+    - Table: users
+    - User records: 3
+
+12. Database Security Configuration Assessment
+    - bind_address = 127.0.0.1.
+    - local_infile = ON; hardening finding identified.
+    - secure_file_priv = empty; hardening finding identified.
+    - skip_name_resolve = OFF.
+    - skip_networking = OFF.
+    - sqli_app has no global FILE privilege.
+    - Evidence: section4/06_database_security_assessment.txt.
+13. Additional Privilege Finding
+    - EXECUTE privilege exists for testdb.search_user.
+    - No application source reference to testdb/search_user/CALL was found.
+    - Privilege requires review; no change made.
+
+14. Raw Logs
+    - logs/apache_error.log
+    - logs/modsec_audit.log
